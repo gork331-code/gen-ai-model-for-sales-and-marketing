@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+*$py.class
+instance/
+nexusai.db
+.env
+.idea/
+.vscode/

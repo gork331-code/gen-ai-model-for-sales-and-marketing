@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NexusAI — Sales & Marketing Intelligence Platform</title>
+  <meta name="description"
+    content="Generative AI-powered sales and marketing intelligence platform with lead scoring, campaign analytics, AI assistant, and content generation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Login Container -->
+  <div id="auth-container" class="auth-wrapper">
+    <div class="glass-card auth-card">
+      <div class="auth-brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 32 32" fill="none">
+            <defs>
+              <linearGradient id="brandGradAuth" x1="0" y1="0" x2="32" y2="32">
+                <stop offset="0%" stop-color="#a78bfa" />
+                <stop offset="100%" stop-color="#06b6d4" />
+              </linearGradient>
+            </defs>
+            <circle cx="16" cy="16" r="14" stroke="url(#brandGradAuth)" stroke-width="2.5" fill="none" />
+            <path d="M10 20 L16 10 L22 20" stroke="url(#brandGradAuth)" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" fill="none" />
+            <circle cx="16" cy="22" r="2" fill="url(#brandGradAuth)" />
+          </svg>
+        </div>
+        <span class="brand-name">NexusAI</span>
+      </div>
+
+      <div id="login-view">
+        <h2 class="auth-title">Welcome Back</h2>
+        <p class="auth-subtitle">Sign in to intelligence</p>
+
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" id="login-username" placeholder="Enter your username" />
+        </div>
+        <div class="form-group" style="margin-bottom: var(--space-6);">
+          <label>Password</label>
+          <input type="password" id="login-password" placeholder="••••••••" />
+        </div>
+
+        <button id="btn-login" class="generate-btn auth-btn">Log In</button>
+        <div id="login-error" class="auth-error"></div>
+
+        <p class="auth-switch">Don't have an account? <a href="#" id="go-to-register">Register</a></p>
+      </div>
+
+      <div id="register-view" style="display: none;">
+        <h2 class="auth-title">Create Account</h2>
+        <p class="auth-subtitle">Join the sales revolution</p>
+
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" id="register-username" placeholder="Choose a username" />
+        </div>
+        <div class="form-group" style="margin-bottom: var(--space-5);">
+          <label>Password</label>
+          <input type="password" id="register-password" placeholder="Create a password" />
+        </div>
+
+        <button id="btn-register" class="generate-btn auth-btn">Register</button>
+        <div id="register-error" class="auth-error"></div>
+
+        <p class="auth-switch">Already have an account? <a href="#" id="go-to-login">Log In</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="app" style="display: none; opacity: 0; transition: opacity 0.5s ease;">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 32 32" fill="none">
+            <defs>
+              <linearGradient id="brandGrad" x1="0" y1="0" x2="32" y2="32">
+                <stop offset="0%" stop-color="#a78bfa" />
+                <stop offset="100%" stop-color="#06b6d4" />
+              </linearGradient>
+            </defs>
+            <circle cx="16" cy="16" r="14" stroke="url(#brandGrad)" stroke-width="2.5" fill="none" />
+            <path d="M10 20 L16 10 L22 20" stroke="url(#brandGrad)" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" fill="none" />
+            <circle cx="16" cy="22" r="2" fill="url(#brandGrad)" />
+          </svg>
+        </div>
+        <span class="brand-name">NexusAI</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-page="dashboard" id="nav-dashboard">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7" />
+            <rect x="14" y="3" width="7" height="7" />
+            <rect x="3" y="14" width="7" height="7" />
+            <rect x="14" y="14" width="7" height="7" />
+          </svg>
+          <span>Dashboard</span>
+        </a>
+        <a href="#" class="nav-item" data-page="leads" id="nav-leads">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+          <span>Lead Intelligence</span>
+        </a>
+        <a href="#" class="nav-item" data-page="campaigns" id="nav-campaigns">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+          </svg>
+          <span>Campaigns</span>
+        </a>
+        <a href="#" class="nav-item" data-page="assistant" id="nav-assistant">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+          </svg>
+          <span>AI Assistant</span>
+        </a>
+        <a href="#" class="nav-item" data-page="content" id="nav-content">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+          </svg>
+          <span>Content Generator</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-profile">
+          <div class="user-avatar">KS</div>
+          <div class="user-info">
+            <span class="user-name">Karthik S.</span>
+            <span class="user-role">Admin</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="main-content">
+      <!-- Top Bar -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle sidebar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
+          <div class="search-bar">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input type="text" id="global-search" placeholder="Search leads, campaigns, insights..." />
+            <span class="search-chip">AI ⌘K</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <button class="topbar-btn" id="btn-notifications" aria-label="Notifications">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+              <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+            </svg>
+            <span class="notification-badge">3</span>
+          </button>
+          <button class="topbar-btn ai-quick-btn" id="btn-ai-quick">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+            <span>Ask AI</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Page Container -->
+      <div id="page-container" class="page-container">
+        <!-- Pages are rendered here by JavaScript -->
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
